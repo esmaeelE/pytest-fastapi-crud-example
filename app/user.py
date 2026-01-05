@@ -55,7 +55,8 @@ def get_user(userId: str, db: Session = Depends(get_db)):
 
     try:
         return schemas.GetUserResponse(
-            Status=schemas.Status.Success, User=schemas.UserBaseSchema.model_validate(db_user)
+            Status=schemas.Status.Success,
+            User=schemas.UserBaseSchema.model_validate(db_user),
         )
     except Exception as e:
         raise HTTPException(

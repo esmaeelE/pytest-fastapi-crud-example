@@ -6,7 +6,6 @@ from uuid import UUID
 
 
 class UserBaseSchema(BaseModel):
-
     id: UUID | None = None
     first_name: str = Field(
         ..., description="The first name of the user", example="John"

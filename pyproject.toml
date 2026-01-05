@@ -1,23 +1,25 @@
-[tool.poetry]
+[project]
 name = "user-service-example"
 version = "0.1.0"
 description = "A simple user service example"
-authors = ["ericsalesdeandrade <sdaeric19@gmail.com>"]
+authors = [{ name = "ericsalesdeandrade", email = "sdaeric19@gmail.com" }]
+requires-python = ">=3.12,<4"
 readme = "README.md"
+dependencies = [
+    "fastapi[standard]>=0.128.0",
+    "uvicorn>=0.40.0",
+    "pydantic>=2.12.5",
+    "httpx>=0.28.1",
+    "sqlalchemy>=2.0.44",
+    "sqlalchemy-utils>=0.42.1",
+]
 
-[tool.poetry.dependencies]
-python = "^3.12"
-fastapi = "0.110.3"
-uvicorn = "^0.29.0"
-pydantic = "^2.7.1"
-httpx = "^0.27.0"
-sqlalchemy-utils = "^0.41.2"
+[dependency-groups]
+test = [
+    "pytest>=9.0.2",
+    "pytest-randomly>=4.0.1",
+]
 
-
-[tool.poetry.group.test.dependencies]
-pytest = "^8.2.0"
-pytest-randomly = "^3.15.0"
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+# Define UV environment-specific configurations
+[tool.uv]
+default-groups = ["test"]

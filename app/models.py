@@ -4,6 +4,7 @@ from sqlalchemy.sql import func
 from sqlalchemy_utils import UUIDType
 import uuid
 
+
 class User(Base):
     __tablename__ = "users"
 

@@ -1,10 +1,27 @@
 # User Service API Example
 
+## UV
+
+### Setup
+
+```bash
+uv venv
+source .venv/bin/activate
+uv sync
+```
+
+### Run
+
+```bash
+uv run fastapi run
+```
+
 ## Overview
 
 This is a simple User Service CRUD (Create, Read, Update, Delete) API built with FastAPI and SQLite. The API allows you to create, read, update, and delete users. It uses Pydantic models for request and response validation and SQLAlchemy for database operations.
 
 ## Architecture
+
 This project follows a clean architecture pattern, separating concerns to enhance maintainability and scalability. Here's a brief overview:
 
 - API Layer (FastAPI): Handles HTTP requests and responses, routing, and interaction with the service layer.
@@ -15,6 +32,7 @@ This project follows a clean architecture pattern, separating concerns to enhanc
 ## Getting Started
 
 ### Prerequisites and Dependencies
+
 - Python 3.12
 - FastAPI
 - SQLite
@@ -22,20 +40,20 @@ This project follows a clean architecture pattern, separating concerns to enhanc
 
 #### Poetry
 
-This project uses [Poetry](https://python-poetry.org/) for dependency management. 
+This project uses [Poetry](https://python-poetry.org/) for dependency management.
 
 If you're not familiar with Poetry, please follow [these instructions](https://python-poetry.org/docs/#installation) to install it.
 
 Once you've installed Poetry, you can install the dependencies using the following command:
 
 ```shell
-$ poetry install
+poetry install
 ```
 
 Then run the below command to activate the virtual environment.
 
 ```shell
-$ poetry shell
+poetry shell
 ```
 
 #### Pip
@@ -43,7 +61,7 @@ $ poetry shell
 If you prefer using `pip`, you can create a virtual environment and then install the dependencies using the following command:
 
 ```shell
-$ pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 
 ## How To Run the Server
@@ -51,7 +69,7 @@ $ pip install -r requirements.txt
 To run the server, use the following command:
 
 ```shell
-$ uvicorn app.main:app --host localhost --port 8000 --reload
+uvicorn app.main:app --host localhost --port 8000 --reload
 ```
 
 This will spin up the server at `http://localhost:8000` with a local SQLite database `users.db`.
@@ -85,10 +103,9 @@ To get all users, send a GET request to `http://localhost:8000/api/users`.
 
 - `GET /api/users/{userId}/`: Get a user by ID.
 
-To get a user by ID, send a GET request to `http://localhost:8000/api/users/{userId}`. 
+To get a user by ID, send a GET request to `http://localhost:8000/api/users/{userId}`.
 
 If the user with the specified ID does not exist, the API will return a 404 Not Found response. The same logic is carried out for the Update and Delete endpoints.
-
 
 ### Update User
 
@@ -112,11 +129,13 @@ To update a user by ID, send a PATCH request to `http://localhost:8000/api/users
 To delete a user by ID, send a DELETE request to `http://localhost:8000/api/users/{userId}`.
 
 ## How To Run the Unit Tests
+
 To run the Unit Tests, from the root of the repo run
+
 ```shell
-$ pytest 
+pytest
 ```
 
-This will spin up a test database in SQLite `test_db.db`, run the tests and then tear down the database. 
+This will spin up a test database in SQLite `test_db.db`, run the tests and then tear down the database.
 
 You can use `pytest -v` for verbose output and `pytest -s` to disable output capture for better debugging.
